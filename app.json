@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "minojob_frontend",
+    "slug": "minojob_frontend",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/mino-quadrado.png",
+    "splash": {
+      "image": "./assets/mino-quadrado.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/mino-quadrado.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/mino-quadrado.png"
+    }
+  }
+}
