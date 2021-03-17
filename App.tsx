@@ -1,15 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Header from './src/components/Header'
 import Vaga from './src/pages/PageVaga'
+import Routes from './src/routes/routes'
+
 
 export default function App() {
   return (
     <>
-     <Vaga/> 
-    <View style={styles.container}>
-      
-    </View>
+       <Routes/> 
     </>
   );
 }
