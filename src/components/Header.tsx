@@ -15,10 +15,11 @@ export default function Header() {
 const styles = StyleSheet.create({
     container: {
       width: '100%',
-      height: Dimensions.get('window').height / 13,
+      height: Dimensions.get('window').height / 8,
       backgroundColor: '#57B894',
+      paddingTop: 25,
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     logoHeader: {
         width: 160,

@@ -1,44 +1,48 @@
-import React from 'react'
-import {View, StyleSheet} from 'react-native'
-
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, ScrollView, Dimensions, SafeAreaView} from 'react-native'
 import Header from '../components/Header'
-import CardVaga from '../components/CardVaga'
+import CardVaga, {Vaga} from '../components/CardVaga'
+import api from '../services/api';
 
-export default function Vaga() {
+export default function pageVaga() {
+    const [vaga, setVaga] = useState([])
+
+        useEffect(() => {
+            api.get('/vaga').then((response )=> {
+                setVaga(response.data)
+            })
+        }, [])
     
     return(
         <>
-        <Header/>
-        <View>
+                <Header/>
+                <View>
+                <ScrollView>
+                
+                    {
 
-            <CardVaga 
-            nomeVaga ='PROGRAMADOR WEB JÚNIOR ' 
-            Empresa= 'MinoJob' 
-            faixaSalarialVaga = 'R$1.500,00'
-            cidade = 'Guarulhos'
-            UF = 'SP'
-            />
-            <CardVaga 
-            nomeVaga ='ESTÁGIO MOBILE / REACT NATIVE ' 
-            Empresa= 'Facebook Inc.' 
-            faixaSalarialVaga = 'R$2.000,00'
-            cidade = 'São Paulo'
-            UF = 'BH'
-            />
-            <CardVaga 
-            nomeVaga ='PROGRAMADOR JAVA SÊNIOR' 
-            Empresa= 'Apple Enterprise' 
-            faixaSalarialVaga = 'R$15.000,00'
-            cidade = 'Santos'
-            UF = 'RJ'
-            />
-            
-        </View>
+                        vaga.map((itemVaga : Vaga) => {
+                            return <CardVaga key={itemVaga.id} vaga={itemVaga}/>
+                        })
+
+                    }
+
+                </ScrollView>
+                </View>
         </>
     )
     
 }
 
 const styles = StyleSheet.create({
-
+    
 })
+
+
+{/* <CardVaga 
+nomeVaga ='PROGRAMADOR WEB JÚNIOR ' 
+Empresa= 'MinoJob' 
+faixaSalarialVaga = 'R$1.500,00'
+cidade = 'Guarulhos'
+UF = 'SP'
+/> */}

@@ -1,32 +1,49 @@
 import React from 'react'
-import {View, StyleSheet, Text, Dimensions,Image} from 'react-native'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
+import {View,SafeAreaView, StyleSheet, Text, TouchableHighlight, Image, Dimensions} from 'react-native'
 
+import api from '../services/api'
 
-export default function cardVaga(props:any) {
+export interface Vaga {
+    id: number,
+    tx_nome: string,
+    tx_area_interesse: string,
+    tx_detalhes: string,
+    tx_faixa_salarial: string,
+    cidade: string,
+    uf: string,
+    pais: string,
+    bairro: string,
+}
+
+export default function CardVaga(props:any) {
+
     return (
         <>
-        <View style={styles.container}>
+        <TouchableHighlight onPress={() => {alert('clicou')}}>
+
+
+            <SafeAreaView style={styles.container}>
 
             {/* Imagem lateral */}
             <View style={styles.imgArea}> 
-                <Image style={styles.imgLogo} source={require('../../assets/mino-quadrado.png')}/>
+                <Image 
+                style={styles.imgLogo} 
+                source={require('../../assets/mino-quadrado.png')}/>
             </View>
-
 
             <View style={styles.card}>
 
                 <View>
                     {/* Titulo da Vaga */}
                     <Text style={styles.titleVaga}>
-                        {props.nomeVaga}
+                        {`${props.vaga.tx_nome}`}
                     </Text>
 
 
                     {/* Empresa */}
                     <Text style={styles.titleEmpresa}>
-                        {props.Empresa}
-                    </Text>
+                        {`${props.vaga.empresa.tx_nome}`}
+                    </Text> 
                 </View>
 
 
@@ -35,7 +52,7 @@ export default function cardVaga(props:any) {
                     <View style={styles.info}>
 
                         <Text>
-                            {props.faixaSalarialVaga}
+                            {`${props.vaga.tx_faixa_salarial}`}
                         </Text>
 
                     </View>
@@ -43,29 +60,28 @@ export default function cardVaga(props:any) {
                     <View style={styles.info}>
 
                         <Text>
-                            {props.cidade} - {props.UF}
+                            {`${props.vaga.cidade} - ${props.vaga.uf}`}
                         </Text>
 
                     </View>
 
                 </View>
+                
             </View>
             
-        </View>
-
+        </SafeAreaView>
+        </TouchableHighlight>
         </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         flexDirection: 'row',
-        alignItems: 'flex-start',
-        padding: 5,
-        marginTop: 15,
-        width: '100%',
-        backgroundColor: '#fFf'
+        alignItems: 'center',
+        width: Dimensions.get('window').width,
+        backgroundColor: '#fff'
     },
     titleVaga: {
         fontWeight: 'bold',
@@ -79,11 +95,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         borderBottomColor: '#ccc',
         borderBottomWidth: 2,
-        marginLeft: 15,
-        height: 100,
-        width: '100%',
-        paddingRight: 100,
-        backgroundColor: '#fff'
+        width: '80%',
+        height: (Dimensions.get('window').height)/5.5,
         
     },
     imgLogo: {
@@ -104,7 +117,8 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     imgArea: {
-        marginTop: 5
+        justifyContent: 'center',
+        alignItems: 'center'
     }
     
 })
