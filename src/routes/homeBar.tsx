@@ -1,6 +1,8 @@
  import React from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 import Home from '../pages/Home'
 import PageVaga from '../pages/PageVaga'
@@ -29,29 +31,52 @@ export default function homeBar() {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
+            },
+            iconStyle: {
+                flex: 0,
+                width: 30,
+                height: 30
             }
+
 
         }}>
             
             <Screen 
-            name='PageVaga' 
-            component={PageVaga}
-            options={{
-                tabBarLabel:"VAGAS"
-            }}
-            />
-            <Screen 
             name='Home' 
             component={Home}
             options={{
-                tabBarLabel:"HOME"
+                tabBarLabel:"",
+                tabBarIcon:({color, size}) => {
+                    return (
+                        <Icon name="home" size={30} color="#fff" />
+                    )
+                }
             }}
             />
+
+            <Screen 
+            name='PageVaga' 
+            component={PageVaga}
+            options={{
+                tabBarLabel:"",
+                tabBarIcon:({color, size}) => {
+                    return (
+                        <Icon name="briefcase" size={30} color="#fff" />
+                    )
+                }
+            }}
+            />
+
             <Screen 
             name='User' 
             component={User}
             options={{
-                tabBarLabel:"USUARIO"
+                tabBarLabel:"",
+                tabBarIcon:({color, size}) => {
+                    return (
+                        <Icon name="person-sharp" size={30} color="#fff" />
+                    )
+                }                
             }}
             />
 
