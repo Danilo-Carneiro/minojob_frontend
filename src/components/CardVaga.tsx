@@ -1,8 +1,6 @@
 import React from 'react'
 import {View,SafeAreaView, StyleSheet, Text, TouchableHighlight, Image, Dimensions} from 'react-native'
 
-import api from '../services/api'
-
 export interface Vaga {
     id: number,
     tx_nome: string,

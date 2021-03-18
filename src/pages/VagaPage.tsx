@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, ScrollView, Dimensions, SafeAreaView} from 'react-native'
-import Header from '../components/Header'
 import CardVaga, {Vaga} from '../components/CardVaga'
 import api from '../services/api';
+import Header from '../components/Header'
 
-export default function pageVaga() {
+export default function VagaPage() {
     const [vaga, setVaga] = useState([])
 
         useEffect(() => {

@@ -1,14 +1,19 @@
 import React from 'react'
 
 import {StyleSheet, Text, View} from 'react-native'
+import Header from '../components/Header'
+
 
 export default function User() {
     return (
+        <>
+        <Header/>
         <View style={styles.container}>
             <Text style={styles.title}>
                 PAGE USER
             </Text>
         </View>
+        </>
     )
 }
 

@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-import Home from '../pages/Home'
-import PageVaga from '../pages/PageVaga'
-import User from '../pages/User'
+import Home from '../pages/HomePage'
+import PageVaga from '../pages/VagaPage'
+import User from '../pages/UserPage'
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
