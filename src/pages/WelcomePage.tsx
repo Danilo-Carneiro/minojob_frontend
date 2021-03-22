@@ -1,20 +1,26 @@
-import React from 'react'
-/* import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
- */
+import React,{useState} from 'react'
+import Icon from 'react-native-vector-icons/Ionicons';
+import Modal from 'react-native-modal'
+
 import {
     StyleSheet, 
     Text, 
     View, 
     TouchableHighlight, 
     Image,
-    
+    TextInput,
     } from 'react-native'
+
 
 import { useNavigation } from '@react-navigation/native'
 
-import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Home() {
+
+    const [visible, setVisible] = useState(false)
+    const toggleModal = () => {
+        setVisible(!visible)
+    }
 
     const { navigate } = useNavigation();
 
@@ -68,11 +74,12 @@ export default function Home() {
             <Text 
             style={[styles.textBtn, 
                     styles.alingCenterAll]}>
-                Arrasta pra cima e faça seu Login
+                Clique aqui e faça seu Login
             </Text>
 
             <TouchableHighlight
-            onPress={() => navigate("LoginPage")}
+            onPress={toggleModal}
+            underlayColor="#3C9071"
             style={[styles.btnUp]}>
                 <Icon 
                 name="chevron-up" 
@@ -81,6 +88,75 @@ export default function Home() {
                 />
             </TouchableHighlight>
             
+
+            <Modal 
+            isVisible={visible}
+            backdropOpacity={0.1}
+            style={{backgroundColor: '#fff', borderRadius: 8}}
+            >
+                    <TouchableHighlight
+                    onPress={toggleModal}
+                    underlayColor="#3C9071"
+                    style={{
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        marginTop:'5%'
+                    }}>
+                        <Icon 
+                        name="chevron-down" 
+                        size={50} 
+                        color="#fff" 
+                        />
+                    </TouchableHighlight>
+                <View style={styles.containerModal}>
+
+
+
+                    <Image style={{width: 150,
+                    height: 150}}
+                    source={require('../../assets/mino-quadrado.png')}/>
+                    <View style={{
+                        justifyContent: 'center', 
+                        alignItems:'center',
+                        flexDirection: 'column',
+                        width: '100%',
+                        height: '60%'}}>
+                        
+                        <Text style={{
+                            color: 'white', 
+                            fontWeight: 'bold'}}>E-mail</Text>
+                        <TextInput 
+                        style={[styles.btnInput]}
+                        placeholder='E-MAIL'>
+                        </TextInput>
+
+                        <Text style={{
+                            color: 'white', 
+                            fontWeight: 'bold',}}>Senha</Text>
+                        <TextInput 
+                        style={[styles.btnInput]}
+                        secureTextEntry={true}
+                        placeholder='SENHA'>
+                        </TextInput>
+
+
+                        <TouchableHighlight
+                        style={styles.btnLogin}
+                        onPress={() => {setVisible(false)
+                            setTimeout(() => {
+                                navigate("VagaPage")
+                            }, 250);
+                            }}>
+                            <Text>
+                                LOGAR
+                            </Text>
+                        </TouchableHighlight>
+                    </View>
+
+                    
+                </View>
+            </Modal>
+
         </View>
         </>
     )
@@ -93,6 +169,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#57B894',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    btnLogin: {
+        width: 200,
+        height: 50,
+        backgroundColor: '#57B894',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textBloco: {
         width: '100%',
@@ -134,5 +218,22 @@ const styles = StyleSheet.create({
     alingCenterAll: {
         alignItems: 'center',
         justifyContent: 'center',
+    }, 
+    btnInput: {
+        width: '50%',
+        height: 40,
+        backgroundColor: 'white',
+        color: '#000',
+        borderRadius: 6,
+        marginVertical: 10,
+        marginHorizontal: 5,
+        padding: 7
+
     },
+    containerModal: {
+        height: '100%',
+        width: '100%',
+        alignItems:'center',
+        justifyContent: 'center'
+    }
 })
