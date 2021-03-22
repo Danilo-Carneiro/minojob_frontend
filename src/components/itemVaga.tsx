@@ -40,17 +40,17 @@ export default function itemVaga(props:any) {
                 {/* Imagem lateral */}
                 <View style={{marginTop: 10}}>
 
-                    {!props.vaga.tx_avatar 
+                    {!props.vaga.empresa.tx_avatar 
                     ?<Image 
                     style={[
                         styles.imgLogo, 
                         styles.borda]} 
-                    source={{uri:'https://logodownload.org/wp-content/uploads/2014/04/coca-cola-logo-2.png'}}/>
+                    source={{uri:'https://a3.vnda.com.br/x450/ceramicasa/2019/01/24/cv710027-porcelanato-villagres-metropolitana-itamaraty-cinza-escuro-71x71-650.jpg?1548338785'}}/>
                     :<Image 
                     style={[
                         styles.imgLogo, 
                         styles.borda]} 
-                    source={{uri:props.vaga.tx_avatar}}/>}
+                    source={{uri:props.vaga.empresa.tx_avatar}}/>}
 
                     
                 </View>
@@ -77,7 +77,6 @@ export default function itemVaga(props:any) {
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    marginHorizontal: 5,
                 }}>
 
                     <View style={[
@@ -104,11 +103,17 @@ export default function itemVaga(props:any) {
 
 
                 </View>
-                        <TouchableHighlight style={[
-                            styles.btnDetalhes, 
-                            styles.alinhar, 
-                            styles.borda]} onPress={toggleModal}>
-                            <Text style={[styles.titleBtn, styles.bold]}>Detalhes</Text>
+                        <TouchableHighlight 
+                            underlayColor="#3C9071"
+                            style={[
+                                styles.btnDetalhes, 
+                                styles.alinhar, 
+                                styles.borda]} 
+                            onPress={toggleModal}>
+
+                            <Text style={[styles.titleBtn, styles.bold]}>
+                                Detalhes
+                            </Text>
                         </TouchableHighlight>
                 
             </View>
@@ -137,6 +142,9 @@ export default function itemVaga(props:any) {
 
 
                     <TouchableHighlight
+                    style={{borderRadius: 8,
+                    alignItems: 'center'}}
+                    underlayColor="#3C9071"
                     onPress={() => {setVisible(false)
                         setTimeout(function(){navigate("EmpresaPage")}, 250)
                         }}>
@@ -245,6 +253,7 @@ export default function itemVaga(props:any) {
                     marginTop: '15%'}}>
 
                 <TouchableHighlight
+                underlayColor="#3C9071"
                 onPress={() => alert('SE CANDIDATOU')}
                 style={[
                     styles.btnModal, 
@@ -259,6 +268,7 @@ export default function itemVaga(props:any) {
                 </TouchableHighlight>
 
                 <TouchableHighlight
+                underlayColor="#b80000"
                 onPress={toggleModal}
                 style={[
                     styles.btnModal, 
@@ -288,28 +298,31 @@ const styles = StyleSheet.create({
     },
     titleVaga: {
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 18,
+        color: '#000'
     },
     titleEmpresa: {
         fontSize: 15,
-        color: '#7a7a7a'
+        color: '#7a7a7a',
+        marginBottom: 10
     },
     card: {
         borderBottomColor: '#ccc',
         borderBottomWidth: 2,
         width: '80%',
-        height: 150,
+        height: 200,
         
     },
     imgLogo: {
         width: 50,
-        height: 50,
-        
+        height: 50
     },
     info: {
         backgroundColor: '#ebebeb',
         borderColor: 'white',
-        borderWidth: 1
+        marginBottom: 10,
+        borderWidth: 1,
+        padding: 10
     },
     modalStyles: {
         backgroundColor: 'white',
