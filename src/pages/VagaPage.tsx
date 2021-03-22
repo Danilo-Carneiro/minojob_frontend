@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, ScrollView, Dimensions, SafeAreaView} from 'react-native'
-import CardVaga, {Vaga} from '../components/CardVaga'
+import {View, StyleSheet, ScrollView, TextInput, Dimensions} from 'react-native'
+import CardVaga, {Vaga} from '../components/itemVaga'
+import Icon from 'react-native-vector-icons/Ionicons';
 import api from '../services/api';
 import Header from '../components/Header'
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export default function VagaPage() {
     const [vaga, setVaga] = useState([])
@@ -16,18 +18,18 @@ export default function VagaPage() {
     return(
         <>
                 <Header/>
-                <View>
-                <ScrollView>
-                
-                    {
+               
+                <View style={styles.container}>
+                    <ScrollView style={{height: '100%'}}>
 
-                        vaga.map((itemVaga : Vaga) => {
-                            return <CardVaga key={itemVaga.id} vaga={itemVaga}/>
-                        })
+                        {
+                            vaga.map((itemVaga : Vaga) => {
+                                return <CardVaga key={itemVaga.id} vaga={itemVaga}/>
+                            })
+                        }
+                        
 
-                    }
-
-                </ScrollView>
+                    </ScrollView>
                 </View>
         </>
     )
@@ -35,14 +37,7 @@ export default function VagaPage() {
 }
 
 const styles = StyleSheet.create({
-    
+    container: {
+        height: Dimensions.get('window').height-100
+    }
 })
-
-
-{/* <CardVaga 
-nomeVaga ='PROGRAMADOR WEB JÚNIOR ' 
-Empresa= 'MinoJob' 
-faixaSalarialVaga = 'R$1.500,00'
-cidade = 'Guarulhos'
-UF = 'SP'
-/> */}
